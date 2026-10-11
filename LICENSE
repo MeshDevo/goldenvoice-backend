@@ -1,0 +1,150 @@
+# GOLDEN VOICE — GV1.0
+## Proprietary License Notice
+
+**SPDX-License-Identifier:** LicenseRef-GV-1.0
+**Version:** GV1.0
+**Effective date:** 11 October 2026
+**Project:** Golden Voice ("GV")
+**Owner:** Ahmed Ali (أحمد علي)
+
+© 2024–2026 Ahmed Ali. All rights reserved.
+
+> **Important.** This is a proprietary license notice and statement of the rights-holder's position. It is **not** an open-source license. It does not replace a signed contributor license agreement, IP-assignment agreement, employment or contractor agreement, or advice from a lawyer qualified in the applicable jurisdiction.
+
+## 1. Definitions
+
+In this notice:
+
+- **"Owner"** shall mean Ahmed Ali (أحمد علي), the identified rights-holder of the Project Materials described below.
+- **"Project"** shall mean Golden Voice, also referred to as "GV", including its name, identity, and associated brand assets to the extent owned by the Owner.
+- **"Project Materials"** shall mean the materials owned by the Owner and included in, created for, or supplied to the Project, including source code, object code, architecture, designs, interfaces, documentation, databases and schemas, scripts, configurations, workflows, original written material, audiovisual and dubbing content, translations, graphics, logos, brand assets, domain names, project accounts and repositories, and project-specific technical or business information.
+- **"You"** shall mean any individual or legal entity accessing, viewing, or receiving Project Materials.
+
+Inclusion of material in a repository, or its creation in connection with the Project, does not by itself establish that the Owner holds rights in third-party material or in a contributor's pre-existing work.
+
+## 2. Ownership; copyright notice; all rights reserved
+
+Subject to third-party rights and to rights that cannot legally be assigned, the Owner is the copyright holder of the Project Materials he created, acquired, or otherwise validly owns.
+
+© 2024–2026 Ahmed Ali. All rights reserved.
+
+All rights not expressly granted are reserved. Nothing in this notice transfers ownership of any Project Materials.
+
+The Owner expressly reserves all moral rights in the Project Materials, including the rights of paternity (attribution) and integrity (to object to any distortion, mutilation, or modification prejudicial to his honor or reputation), which are inalienable and imprescriptible under applicable law and survive any transfer of economic rights.
+
+## 3. No transfer of ownership by access or contribution
+
+Viewing, downloading, cloning, hosting, maintaining, editing, testing, or contributing to Project Materials does not, by itself, transfer ownership or grant any general right to exploit them. Repository access, credentials, a role, a title, a commit, or a contribution is not proof of ownership of the Project or of the Owner's materials.
+
+No contributor, developer, contractor, moderator, collaborator, or other person may represent that they own or control the Project, its repositories, or the Owner's materials merely because they have accessed, maintained, or contributed to them.
+
+## 4. License grant
+
+**No license is granted under this notice.** Except as expressly stated in a separate written agreement signed by, or otherwise validly authorized in writing by, the Owner, no permission is granted to use, copy, modify, merge, publish, distribute, sublicense, sell, rebrand, deploy, or commercially exploit Project Materials, in whole or in part, by any means.
+
+Any permission the Owner grants must be in writing and must identify, as appropriate, the person, the materials, the purpose, the scope, the duration, and the conditions. Permission is limited to its stated scope; it is non-transferable and non-sublicensable unless the written permission expressly allows transfer or sublicensing.
+
+**No implied license.** No license is granted by implication, estoppel, or otherwise, and no failure by the Owner to enforce any provision shall be construed as a waiver of that provision.
+
+This section does not limit rights that cannot lawfully be restricted, rights expressly granted by applicable law, or rights granted by the platform's terms for use of the platform's own functionality (see Section 7).
+
+## 5. Restrictions
+
+Without the Owner's prior written authorization (or other lawful permission), no person may:
+
+(a) claim, register, transfer, or attempt to obtain ownership or control of the Project or any Project Materials;
+(b) take over, lock the Owner out of, or change the ownership or administrative control of any project account, repository, domain, service, or asset;
+(c) copy, reproduce, modify, adapt, translate, create derivative works from, republish, sell, license, distribute, deploy, or commercially exploit Project Materials beyond what Section 4 or applicable law permits;
+(d) remove, alter, or falsify any copyright notice, authorship record, provenance information, or license notice;
+(e) pass off the Project or its materials as their own, or falsely claim to be the Owner, founder, or an authorized representative;
+(f) use credentials or access rights beyond their authorization, retain access after authorization ends, or interfere with the Owner's legitimate control;
+(g) disclose confidential or non-public Project Materials except as authorized or legally required;
+(h) insert backdoors, exfiltrate data, sabotage the Project, or knowingly introduce malicious code; or
+(i) assist, induce, or facilitate any other person in carrying out any of the acts above.
+
+## 6. Trademarks
+
+This notice does not grant permission to use the trade names, trademarks, service marks, or product names of the Owner — including "Golden Voice" and "GV" and associated logos — except as required for reasonable and customary use in describing the origin of the Project Materials. Any goodwill arising from the use of such names and marks inures solely to the Owner.
+
+## 7. Public repositories and platform terms
+
+A public repository is not an open-source release. Unless a valid license or other legal permission says otherwise, rights in Project Materials remain subject to applicable copyright and other laws, and public visibility is not, by itself, a general permission to reuse the Project.
+
+This notice does not override the platform's terms of service, including the limited rights those terms grant for use of the platform's own functionality (such as viewing and forking public repositories through the service), or rights granted by applicable law that cannot lawfully be restricted.
+
+The Owner should use private repositories and access controls for code or information that must not be publicly accessible: a notice in a public repository cannot make already-public material secret, cannot technically prevent copying, and does not delete copies already made (including forks created while the repository was public).
+
+## 8. Contributors and third-party materials
+
+Each contributor is responsible for ensuring they have the right to submit their contribution. A contribution does not automatically assign copyright in that contribution to the Owner.
+
+Where the Owner intends to receive rights in a contribution, the contributor and the Owner must execute a **separate signed contributor agreement** (for example, a contributor license agreement in the form of the Apache Individual Contributor License Agreement) that clearly identifies the rights granted or assigned, the scope, and any other required terms. This notice is not a substitute for that agreement.
+
+Pre-existing tools, libraries, assets, and code remain subject to their original owners' rights and licenses. Open-source and third-party dependencies must be used in accordance with their own license terms. This notice does not claim ownership of third-party materials and does not override their licenses.
+
+## 9. Confidentiality and security
+
+Persons given access to non-public Project Materials must protect credentials, tokens, private keys, unpublished code, user data, and other confidential information; use them only for the authorized purpose; and promptly report suspected exposure, unauthorized access, or loss.
+
+Any separate confidentiality, employment, contractor, data-protection, or security agreement continues to apply according to its terms.
+
+## 10. Records and evidence
+
+The Owner and authorized maintainers may preserve repository history, commits, access records, written permissions, correspondence, and other lawfully obtained evidence relevant to authorship, authorization, security incidents, or a dispute. Records shall be retained and disclosed in accordance with applicable privacy, data-protection, employment, and procedural laws.
+
+## 11. Breach, remedies, and termination
+
+Unauthorized conduct may lead to revocation of project access, a demand to cease the conduct, preservation of evidence, reports to the platform (including copyright complaints and notice-and-takedown requests under applicable procedures), and civil or other legal proceedings where available under applicable law.
+
+**Irreparable harm; injunctive relief.** You acknowledge that any unauthorized use, reproduction, modification, or distribution of Project Materials may cause the Owner irreparable harm for which monetary damages alone would be inadequate. The Owner shall therefore be entitled to seek injunctive or other equitable relief, including interim and urgent measures, in any court of competent jurisdiction, in addition to any other remedies available at law or in equity. Nothing in this notice prevents the Owner from seeking urgent interim relief in any competent court.
+
+**Willfulness.** This notice is public and attached to the Project Materials. Any unauthorized use occurring after this notice was available to You will be treated by the Owner as knowing and willful, and the Owner will pursue the maximum remedies available under applicable law, which in some jurisdictions include enhanced or statutory damages for willful infringement.
+
+**Costs and fees.** To the fullest extent permitted by applicable law, the Owner reserves the right to recover all reasonable costs of enforcement, including attorney's fees.
+
+Describing conduct as prohibited in this notice does not by itself make it a criminal offense, nor does this notice impose penalties beyond what applicable law provides; criminal liability, damages, injunctions, and other remedies depend on the facts and the governing law.
+
+Where permission has been granted in writing and is revocable under applicable law, the Owner may revoke it by written notice, and any breach of its conditions terminates it automatically unless the written permission provides otherwise. On termination, the recipient must cease the uses covered by the terminated permission and return or securely delete confidential materials when lawfully required, subject to mandatory retention obligations and any separate written agreement. Termination does not erase rights or obligations that accrued earlier and does not transfer ownership of any material.
+
+Nothing in this notice waives any remedy legally available to the rights-holder or limits any defense or right that applicable law does not permit the parties to waive.
+
+## 12. No warranty
+
+THE PROJECT MATERIALS ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NONINFRINGEMENT. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROJECT MATERIALS IS WITH YOU.
+
+## 13. Limitation of liability
+
+IN NO EVENT SHALL THE OWNER OR ANY CONTRIBUTOR BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT (INCLUDING NEGLIGENCE), OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE PROJECT MATERIALS OR THE USE OF OR INABILITY TO USE THEM — INCLUDING ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING LOSS OF USE, DATA, OR PROFITS) — EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES, UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING.
+
+## 14. Governing law; severability; interpretation
+
+This notice does not select a governing law or forum. The governing law, competent courts, and dispute-resolution procedure applicable to any dispute shall be established by a valid written agreement or determined under the applicable conflict-of-laws and mandatory legal rules.
+
+A signed agreement with a contributor, employee, contractor, or partner may supplement this notice. If a valid signed agreement conflicts with this notice, the agreement controls to the extent of the conflict and as permitted by applicable law.
+
+If any provision of this notice is held unenforceable, the remaining provisions shall continue in full force and effect to the maximum extent permitted by law.
+
+The title "GV1.0" and the identifier `LicenseRef-GV-1.0` are document and version identifiers only — not a government registration, certification, or proof of ownership.
+
+A later version of this notice must be clearly identified by version number and date. Publishing a later version does not, by itself, retroactively change a valid signed agreement or remove rights already granted under applicable law.
+
+In case of conflict between the English text and the Arabic summary below, the English text prevails.
+
+---
+
+## بيان عربي موجز
+
+هذه الوثيقة هي **إشعار الترخيص الخاص GV1.0** لمشروع Golden Voice (المعرّف: LicenseRef-GV-1.0). وهي تقرر أن الاطلاع على المستودعات أو المساهمة في البرمجة أو امتلاك صلاحية الوصول لا يمنح، بمفرده، ملكية المشروع أو حق الاستيلاء عليه أو استغلال أصوله، وأن **لا ترخيص ممنوح بموجب هذا الإشعار** إلا باتفاق مكتوب منفصل يوقّعه المالك أو يأذن به كتابةً، ولا يُستنتَج أي ترخيص ضمنياً بأي وجه. ويحتفظ المالك صراحةً بجميع حقوقه الأدبية (النسبة والسلامة) غير القابلة للتصرف أو التقادم بموجب القانون المعمول به.
+
+لا يجوز استخدام الاسم التجاري "Golden Voice" أو "GV" أو الشعارات المرتبطة بهما دون إذن، وما ينشأ من سمعة تجارية عن استخدامها يعود للمالك وحده. ولا تنقل المساهمةُ حقوقَها تلقائياً إلى المالك؛ بل يلزم اتفاق مساهمين مكتوب وموقّع عند قصد نقل الحقوق أو الترخيص بها، وهذا الإشعار ليس بديلاً عن ذلك الاتفاق.
+
+علنية المستودع لا تعني أن المشروع مفتوح المصدر، لكن هذا الإشعار لا يلغي شروط منصة الاستضافة (بما فيها الاطلاع والتفرّع عبر وظائف المنصة نفسها) ولا الحقوق التي يفرضها القانون ولا يمكن تقييدها. ولحماية الشيفرة من الاطلاع العام يلزم جعل المستودعات خاصة وضبط الصلاحيات، فالإشعار في مستودع عام لا يجعل المادة المنشورة سرية ولا يمحو النسخ السابقة.
+
+أي استخدام غير مصرّح به بعد إتاحة هذا الإشعار يُعامَل من المالك على أنه عن علمٍ وعمد، ويحتفظ المالك بحقه في طلب وقف الاستخدام والتدابير المستعجلة أمام أي محكمة مختصة، واسترداد تكاليف الإنفاذ وأتعاب المحاماة بالقدر الذي يسمح به القانون، وملاحقة أقصى الجزاءات التي يتيحها القانون المعمول به.
+
+تُقدَّم المواد "كما هي" دون أي ضمان صريح أو ضمني، ولا يتحمل المالك أو المساهمون أي مسؤولية عن المطالبات أو الأضرار الناشئة عن استخدامها إلا بقدر ما يفرضه القانون المعمول به أو يُتفق عليه كتابةً.
+
+لم يُحدَّد في هذا الإشعار قانونٌ واجب التطبيق أو محكمةٌ مختصة عمداً؛ ويُحدَّد ذلك باتفاق مكتوب أو وفق قواعد تنازع القوانين والقواعد الآمرة المعمول بها. هذا الإشعار بيانٌ أحادي من صاحب الحق وليس استشارة قانونية، ولا يغني عن مراجعة محامٍ مختص قبل الاعتماد النهائي.
+
+**المالك:** أحمد علي (Ahmed Ali) — جميع الحقوق محفوظة © 2024–2026
+**الوثيقة:** GV1.0 — سارية من 11 أكتوبر 2026
