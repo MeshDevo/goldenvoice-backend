@@ -1,94 +1,86 @@
+# Golden Voice — one application, direct connection, no API
 
-# Golden Voice Backend
+Golden Voice used to be two repositories — `gv-frontend` (React SPA)
+and `goldenvoice-backend` (Express API) — talking to each other over a
+REST API. By Henry's decision (2026-10-18) that plan is abandoned:
+**the API is gone entirely, and the frontend and backend are connected
+directly in a single application.** This repository IS the former
+`goldenvoice-backend`, renamed in content to `golden-voice` and
+radically restructured into that single application; `gv-frontend`
+remains untouched as the archive of the old client.
 
-Backend service for the **Golden Voice** platform.
-
-The project provides the server-side foundation for managing the platform's content, users, authentication, media assets, dubbed and translated works, and written content through a structured API.
-
-## Overview
-
-Golden Voice Backend is designed as a modular backend that can grow with the platform while keeping content management, business logic, and data storage separated.
-
-The system is built around:
-
-* REST API
-* PostgreSQL database
-* Prisma ORM
-* TypeScript
-* Authentication and authorization
-* Modular application structure
-* Content and media asset management
-* Audit and data tracking
-
-## Architecture
-
-The backend follows a layered structure:
+## How it works now
 
 ```text
-API
- ↓
-Controllers
- ↓
-Services
- ↓
-Repositories
- ↓
-Database
+Browser ──► Express server (one process)
+              ├─ page handlers (src/web/)
+              │    call the services DIRECTLY, as functions:
+              │    listWorks() · getPublishedWorkById() · …
+              │    then render the React pages to HTML on the server
+              └─ services → repositories → Prisma → PostgreSQL
 ```
 
-This keeps API handling, business logic, and database operations separated and easier to maintain.
+- The browser receives finished HTML pages. There is **no fetch, no
+  `/api/v1`, no API client, no separate frontend build or deployment,
+  no CORS** — none of it exists in this codebase anymore.
+- Pages: `/` (home), `/works` (with `?type=` filtering and `?cursor=`
+  pagination as plain links), `/works/:workId` (detail), plus `/health`.
+- The page components live in `src/web/` — they are the old
+  React components, changed to receive their data as props from the
+  server handler instead of fetching it.
+- The backend's service and repository layers are unchanged in spirit:
+  modular monolith (auth, users, works, dubbed, translated, writing,
+  assets) over Prisma/PostgreSQL. Only their entry point changed —
+  page handlers (and future server-side form handlers) call them
+  directly instead of HTTP controllers.
 
-## Main Areas
+## Layout
 
-The backend currently covers the core areas required by Golden Voice, including:
+```text
+golden-voice/
+  src/
+    app/          the Express application — pages + services, one process
+    web/          the frontend: pages, components, rendering (SSR)
+    modules/      services, repositories, DTOs per module
+    database/     the shared Prisma client
+    shared/       config, errors, middleware, utils
+  prisma/         schema.prisma
+  public/         global.css for the rendered pages
+  legacy/         everything removed by the unification, preserved:
+    spa-client/   the old Vite/React SPA (fetch + /api/v1 client)
+    api-layer/    the old REST routes + controllers of every module
+    vanilla-prototype/ · world-clock/  (from the first unification pass)
+  LICENSE         GV1.0 proprietary license (Ahmed Ali)
+```
 
-* Users and authentication
-* Works and content
-* Dubbed versions
-* Translated content
-* Written content
-* Media assets
-* Audit records
-
-## Database
-
-PostgreSQL is used as the primary database, with Prisma handling database access, schema management, and migrations.
-
-Media files are represented separately from application data, allowing the backend to work with external storage systems in the future.
-
-## Development
-
-Install dependencies:
+## Run it
 
 ```bash
+cp .env.example .env          # fill in DATABASE_URL and JWT_SECRET
 npm install
-```
-
-Generate the Prisma client:
-
-```bash
 npm run prisma:generate
+npm run dev                   # the whole application on http://localhost:4000
 ```
 
-Validate the Prisma schema:
+Production: `npm run build && npm start` — one Node process.
 
-```bash
-npm run prisma:validate
-```
+## Notes
 
-Build the project:
-
-```bash
-npm run build
-```
-
-## Project Status
-
-Golden Voice Backend is under active development.
-
-The architecture is intentionally designed to provide a solid foundation for the future Golden Voice platform while allowing new modules and services to be added without restructuring the entire application.
+- Three minimal behaviour-preserving compile fixes were made while
+  unifying, because the original code did not pass its own build as
+  committed: an unused `Prisma` import (dubbed repository), a
+  `jwt.sign` typing mismatch (auth service), and a `HeadersInit`
+  indexing error (old client service, now in `legacy/spa-client`).
+- Write/admin features (creating works, auth pages, …) previously sat
+  behind the REST controllers. Their services are all still here; in
+  this architecture they return as server-rendered pages with form
+  handlers calling the services directly — no API will be reintroduced
+  for them.
+- Verified on 2026-10-18: install, `prisma generate` and the full
+  TypeScript build pass; the running server renders `/`, `/works` and
+  `/works/:workId` directly from service calls (a running PostgreSQL
+  is required for the data itself) and answers `/health`.
 
 ## License
 
-License information will be added when the project is ready for public distribution.
-
+GV1.0 — see [LICENSE](LICENSE). Owner: Ahmed Ali (أحمد علي).

@@ -1,0 +1,220 @@
+// Golden Voice - Database Schema
+// PostgreSQL is the source of truth for structured metadata and relationships.
+// Large binary files are referenced through Asset.storageKey and should live
+// in object storage rather than inside PostgreSQL.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum WorkStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+enum WorkType {
+  ANIME
+  GAME
+  ENTERTAINMENT
+  DRAMA
+  EDUCATION
+  ORIGINAL
+}
+
+enum UserRole {
+  VISITOR
+  MEMBER
+  EDITOR
+  ADMIN
+}
+
+enum AssetType {
+  VIDEO
+  AUDIO
+  IMAGE
+  SUBTITLE
+  DOCUMENT
+  OTHER
+}
+
+enum AssetStatus {
+  PENDING
+  READY
+  FAILED
+  ARCHIVED
+}
+
+enum AuditAction {
+  CREATE
+  UPDATE
+  DELETE
+  PUBLISH
+  ARCHIVE
+  RESTORE
+}
+
+model User {
+  id           String      @id @default(uuid())
+  email        String      @unique
+  passwordHash String
+  displayName  String
+  role         UserRole    @default(MEMBER)
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  auditLogs AuditLog[]
+  assets    Asset[]
+
+  @@index([role])
+  @@map("users")
+}
+
+model Work {
+  id           String     @id @default(uuid())
+  title        String
+  description  String?
+  thumbnailUrl String?
+  coverUrl     String?
+  type         WorkType
+  status       WorkStatus @default(DRAFT)
+  releaseDate  DateTime?
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+  dubbedVersions     DubbedVersion[]
+  translatedVersions TranslatedVersion[]
+  scripts            Script[]
+  assets             Asset[]
+
+  @@index([status, createdAt, id])
+  @@index([type, status, createdAt, id])
+  @@index([releaseDate, status])
+  @@map("works")
+}
+
+model DubbedVersion {
+  id             String     @id @default(uuid())
+  workId         String
+  work           Work       @relation(fields: [workId], references: [id], onDelete: Cascade)
+  targetLanguage String
+  status         WorkStatus @default(DRAFT)
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+
+  episodes Episode[]
+  assets   Asset[]
+
+  @@index([workId, status, createdAt])
+  @@unique([workId, targetLanguage])
+  @@map("dubbed_versions")
+}
+
+model Episode {
+  id              String        @id @default(uuid())
+  dubbedVersionId String
+  dubbedVersion   DubbedVersion @relation(fields: [dubbedVersionId], references: [id], onDelete: Cascade)
+  episodeNumber   Int
+  title           String
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  assets Asset[]
+
+  @@unique([dubbedVersionId, episodeNumber])
+  @@map("episodes")
+}
+
+model TranslatedVersion {
+  id             String     @id @default(uuid())
+  workId         String
+  work           Work       @relation(fields: [workId], references: [id], onDelete: Cascade)
+  sourceLanguage String
+  targetLanguage String
+  translatorId   String?
+  status         WorkStatus @default(DRAFT)
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+
+  assets Asset[]
+
+  @@index([workId, status, createdAt])
+  @@unique([workId, sourceLanguage, targetLanguage])
+  @@map("translated_versions")
+}
+
+model Script {
+  id        String     @id @default(uuid())
+  workId    String
+  work      Work       @relation(fields: [workId], references: [id], onDelete: Cascade)
+  writerId  String?
+  title     String
+  content   String?
+  status    WorkStatus @default(DRAFT)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  assets Asset[]
+
+  @@index([workId, status, createdAt])
+  @@map("scripts")
+}
+
+// Asset contains metadata about a stored file. The actual binary belongs in
+// object storage. storageKey is intentionally provider-neutral (S3, MinIO,
+// Cloudflare R2, etc.).
+model Asset {
+  id                  String      @id @default(uuid())
+  fileName            String
+  storageKey          String      @unique
+  mimeType            String
+  sizeBytes           BigInt
+  checksumSha256      String?
+  type                AssetType
+  status              AssetStatus @default(PENDING)
+  version             Int         @default(1)
+  createdAt           DateTime    @default(now())
+  updatedAt           DateTime    @updatedAt
+  uploadedById        String?
+  uploadedBy          User?       @relation(fields: [uploadedById], references: [id], onDelete: SetNull)
+  workId              String?
+  work                Work?       @relation(fields: [workId], references: [id], onDelete: Cascade)
+  dubbedVersionId     String?
+  dubbedVersion       DubbedVersion? @relation(fields: [dubbedVersionId], references: [id], onDelete: Cascade)
+  episodeId           String?
+  episode             Episode?    @relation(fields: [episodeId], references: [id], onDelete: Cascade)
+  translatedVersionId String?
+  translatedVersion   TranslatedVersion? @relation(fields: [translatedVersionId], references: [id], onDelete: Cascade)
+  scriptId            String?
+  script              Script?    @relation(fields: [scriptId], references: [id], onDelete: Cascade)
+
+  @@index([workId, type, status])
+  @@index([dubbedVersionId, type, status])
+  @@index([episodeId, type, status])
+  @@index([translatedVersionId, type, status])
+  @@index([scriptId, type, status])
+  @@index([uploadedById, createdAt])
+  @@map("assets")
+}
+
+model AuditLog {
+  id         String      @id @default(uuid())
+  action     AuditAction
+  entityType String
+  entityId   String
+  actorId    String?
+  actor      User?       @relation(fields: [actorId], references: [id], onDelete: SetNull)
+  beforeData Json?
+  afterData  Json?
+  createdAt  DateTime    @default(now())
+
+  @@index([entityType, entityId, createdAt])
+  @@index([actorId, createdAt])
+  @@index([createdAt])
+  @@map("audit_logs")
+}
